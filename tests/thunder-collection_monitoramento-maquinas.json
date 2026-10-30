@@ -1,0 +1,208 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "Monitoramento de Maquinas - CloudTech",
+  "dateExported": "2026-10-29T00:00:00.000Z",
+  "version": "1.2",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "a1000000-0000-4000-8000-000000000001",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET / - Pagina inicial",
+      "url": "http://localhost:8081/",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000002",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /status - RF05",
+      "url": "http://localhost:8081/status",
+      "method": "GET",
+      "sortNum": 20000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" },
+        { "type": "json-query", "custom": "json.status", "action": "equal", "value": "online" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000003",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /versao",
+      "url": "http://localhost:8081/versao",
+      "method": "GET",
+      "sortNum": 30000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000004",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /maquinas - RF03",
+      "url": "http://localhost:8081/maquinas",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" },
+        { "type": "json-query", "custom": "json[0].tipo", "action": "equal", "value": "CNC" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000005",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "POST /maquinas/cadastro - RF01",
+      "url": "http://localhost:8081/maquinas/cadastro",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"nome\": \"Torno CNC 04\",\n  \"tipo\": \"Torno\",\n  \"setor\": \"Usinagem\",\n  \"status\": \"em operacao\"\n}",
+        "form": []
+      },
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "201" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000006",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /maquinas/1 - Buscar por ID",
+      "url": "http://localhost:8081/maquinas/1",
+      "method": "GET",
+      "sortNum": 60000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000007",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /maquinas/99 - Inexistente (404)",
+      "url": "http://localhost:8081/maquinas/99",
+      "method": "GET",
+      "sortNum": 70000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "404" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000008",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "PUT /maquinas/1/status - Atualizar status",
+      "url": "http://localhost:8081/maquinas/1/status",
+      "method": "PUT",
+      "sortNum": 80000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"status\": \"parada\"\n}",
+        "form": []
+      },
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-000000000009",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /producao - RF04",
+      "url": "http://localhost:8081/producao",
+      "method": "GET",
+      "sortNum": 90000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-00000000000a",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "POST /producao - RF02",
+      "url": "http://localhost:8081/producao",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"maquinaId\": 1,\n  \"consumoKw\": 12.5,\n  \"horarioAcionamento\": \"08:30\",\n  \"pecasProduzidas\": 150\n}",
+        "form": []
+      },
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "201" }
+      ]
+    },
+    {
+      "_id": "a1000000-0000-4000-8000-00000000000b",
+      "colId": "a1000000-0000-4000-8000-00000000000c",
+      "containerId": "",
+      "name": "GET /producao/maquina/1 - Historico",
+      "url": "http://localhost:8081/producao/maquina/1",
+      "method": "GET",
+      "sortNum": 110000,
+      "created": "2026-10-29T00:00:00.000Z",
+      "modified": "2026-10-29T00:00:00.000Z",
+      "headers": [],
+      "params": [],
+      "tests": [
+        { "type": "res-code", "custom": "", "action": "equal", "value": "200" }
+      ]
+    }
+  ]
+}
