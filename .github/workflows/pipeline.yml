@@ -1,0 +1,33 @@
+name: Pipeline CI - Monitoramento de Maquinas
+
+on:
+  push:
+    branches: [main, master]
+
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar codigo
+        uses: actions/checkout@v5
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Executar testes e empacotar
+        run: mvn -B clean package
+
+      - name: Armazenar arquivo JAR
+        uses: actions/upload-artifact@v5
+        with:
+          name: monitoramento-maquinas
+          path: target/*.jar
+          if-no-files-found: error
